@@ -37,11 +37,8 @@ namespace MyInventory.API
                 });
             });
             services.AddControllers();
-            services.AddTransient<IClientService, ClientService>();
-            services.AddTransient<IProductService, ProductService>();
-            services.AddTransient<IShoppingCartService, ShoppingCartService>();
-            services.AddTransient<IOrderService, OrderService>();
-            services.AddTransient<IInsertDummyService, InsertDummyService>();
+            services.AddTransient<IShapeService, ShapeService>();
+            services.AddTransient<IPriceService, PriceService>();
             services.AddTransient(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
             services.AddScoped<ApplicationDbContext>();
 
@@ -65,8 +62,7 @@ namespace MyInventory.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(
             IApplicationBuilder app,
-            IWebHostEnvironment env,
-            IInsertDummyService insertDummyService
+            IWebHostEnvironment env
             )
         {
             if (env.IsDevelopment())
@@ -87,8 +83,6 @@ namespace MyInventory.API
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
             });
-
-            insertDummyService.Init();
         }
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MyInventory.API.Models;
+using MyInventory.API.Models.Dtos;
 
 namespace MyInventory.API.Services.Settings
 {
@@ -13,10 +14,7 @@ namespace MyInventory.API.Services.Settings
     {
     }
 
-    public virtual DbSet<Client> Clients { get; set; }
-    public virtual DbSet<Product> Products { get; set; }
-    public virtual DbSet<Order> Orders { get; set; }
-    public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
+    public virtual DbSet<Shape> Shapes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
