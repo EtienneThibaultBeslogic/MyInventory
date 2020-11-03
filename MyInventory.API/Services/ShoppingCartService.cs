@@ -36,19 +36,6 @@ namespace MyInventory.API.Services
             return ShoppingCartDto.ToDto(cart);
         }
 
-        public ShoppingCartDto AddProductToShoppingCart(int shoppingCartId, int productId)
-        {
-            var cart = _cartRepo.SingleOrDefault(x => x.Id == shoppingCartId);
-
-            var product = _productRepo.SingleOrDefault(x => x.Id == productId);
-
-            cart.Products.Add(product);
-
-            var cartUpdated = _cartRepo.Update(cart);
-
-            return ShoppingCartDto.ToDto(cartUpdated);
-        }
-
         public ShoppingCartDto CreateShoppingCart(int clientId)
         {
             var client = _clientRepo.SingleOrDefault(x => x.Id == clientId);
