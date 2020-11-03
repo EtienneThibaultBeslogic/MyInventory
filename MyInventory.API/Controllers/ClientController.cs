@@ -5,8 +5,6 @@ using MyInventory.API.Services.Settings;
 
 namespace MyInventory.API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
     public class ClientController : ApiControllerBase
     {
         private readonly IClientService _clientService;

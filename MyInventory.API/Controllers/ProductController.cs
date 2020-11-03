@@ -6,8 +6,6 @@ using MyInventory.API.Services.Settings;
 
 namespace MyInventory.API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
     public class ProductController : ApiControllerBase
     {
         private readonly IProductService _productService;
@@ -17,15 +15,15 @@ namespace MyInventory.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public ProductDto GetProduct(int id)
+        public IActionResult GetProduct(int id)
         {
-            return _productService.GetProduct(id);
+            return Json(_productService.GetProduct(id));
         }
 
         [HttpGet]
-        public IEnumerable<ProductDto> GetProducts()
+        public IActionResult GetProducts()
         {
-            return _productService.GetProducts();
+            return Json(_productService.GetProducts());
         }
     }
 }

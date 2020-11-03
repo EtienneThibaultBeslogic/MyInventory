@@ -38,6 +38,10 @@ namespace MyInventory.API
             });
             services.AddControllers();
             services.AddTransient<IClientService, ClientService>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IShoppingCartService, ShoppingCartService>();
+            services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<IInsertDummyService, InsertDummyService>();
             services.AddTransient(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
             services.AddScoped<ApplicationDbContext>();
 
@@ -62,7 +66,7 @@ namespace MyInventory.API
         public void Configure(
             IApplicationBuilder app,
             IWebHostEnvironment env,
-            InsertDummyService insertDummyService
+            IInsertDummyService insertDummyService
             )
         {
             if (env.IsDevelopment())

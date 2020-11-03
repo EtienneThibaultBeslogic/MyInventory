@@ -1,19 +1,18 @@
-﻿using MyInventory.API.Models.Dtos;
-using MyInventory.API.Services;
+﻿using MyInventory.API.Services;
 using MyInventory.API.Services.Settings;
-using MyInventory.API.Test;
 using NUnit.Framework;
-using System.Linq;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace MyInventory.API.Controllers
+namespace MyInventory.API.Test.Service
 {
     [TestFixture]
-    public class ClientServiceTest : BaseServiceTest<ClientService>
+    class OrderServiceTest : BaseServiceTest<OrderService>
     {
+
         private IInsertDummyService _insertDummyService;
-        public ClientServiceTest()
-        {
-        }
+
         protected override void RegisterServices()
         {
             RegisterService<IInsertDummyService, InsertDummyService>();
@@ -25,5 +24,7 @@ namespace MyInventory.API.Controllers
             _insertDummyService.Init();
             base.OnInit();
         }
+
+
     }
 }
