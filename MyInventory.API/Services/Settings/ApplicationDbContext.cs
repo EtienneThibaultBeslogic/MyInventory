@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using MyInventory.API.Models;
-using MyInventory.API.Models.Dtos;
 
 namespace MyInventory.API.Services.Settings
 {

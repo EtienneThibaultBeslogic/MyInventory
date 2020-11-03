@@ -8,6 +8,7 @@
     public class PriceService : IPriceService
     {
         private readonly IShapeService _shapeService;
+        private const double _pricePerSquareMeter = 1.5;
 
         public PriceService(IShapeService shapeService)
         {
@@ -16,9 +17,8 @@
 
         public double CalculatePrice(double width, double length)
         {
-            var pricePerMeterSquare = 1.5;
             var area = _shapeService.CalculateArea(width, length);
-            return pricePerMeterSquare * area;
+            return _pricePerSquareMeter * area;
         }
     }
 }
