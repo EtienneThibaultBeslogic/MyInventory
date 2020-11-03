@@ -48,7 +48,7 @@ namespace MyInventory.API.Services
 
         public ClientDto UpdateClient(ClientDto clientDto)
         {
-            var client = _clientsRepo.SingleOrDefault();
+            var client = _clientsRepo.SingleOrDefault(c => c.Id == clientDto.Id);
 
             if (client == null) return null;
 

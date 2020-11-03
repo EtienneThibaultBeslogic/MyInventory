@@ -15,6 +15,7 @@ namespace MyInventory.API.Services
     public class ProductService : IProductService
     {
         private readonly IRepository<Product> _productsRepo;
+
         public ProductService(IRepository<Product> productsRepo)
         {
             _productsRepo = productsRepo;

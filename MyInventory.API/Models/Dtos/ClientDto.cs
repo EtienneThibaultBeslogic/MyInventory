@@ -19,16 +19,5 @@ namespace MyInventory.API.Models.Dtos
                 DateOfBirth = client.DateOfBirth,
             };
         }
-
-        public Client FromDto()
-        {
-            return new Client
-            {
-                Id = Id,
-                Firstname = Firstname,
-                Lastname = Lastname,
-                DateOfBirth = DateOfBirth
-            };
-        }
     }
 }

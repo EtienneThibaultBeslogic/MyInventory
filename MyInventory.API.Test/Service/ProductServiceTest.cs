@@ -1,19 +1,15 @@
-﻿using Moq;
+﻿using System.Linq;
 using MyInventory.API.Models;
 using MyInventory.API.Services;
 using MyInventory.API.Services.Settings;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace MyInventory.API.Test.Service
 {
     [TestFixture]
     class ProductServiceTest : BaseServiceTest<ProductService>
     {
-
+        private IRepository<Product> _productRepo;
         private IInsertDummyService _insertDummyService;
 
         protected override void RegisterServices()
@@ -23,6 +19,7 @@ namespace MyInventory.API.Test.Service
 
         protected override void OnInit()
         {
+            _productRepo = Get<IRepository<Product>>();
             _insertDummyService = Get<IInsertDummyService>();
             _insertDummyService.Init();
             base.OnInit();
@@ -31,16 +28,31 @@ namespace MyInventory.API.Test.Service
         [Test]
         public void ShouldGetProduct()
         {
-            var product = Service.GetProduct(1);
+            //Arrange
+            const int id = 1;
+            var expectedProduct = _productRepo.SingleOrDefault(c => c.Id == id);
 
-            product.Id.ShouldBe(1);
+            //Act
+            var product = Service.GetProduct(id);
+
+            //Assert
+            expectedProduct.ShouldNotBe(null);
+            expectedProduct.Id.ShouldBe(product.Id);
+            expectedProduct.Name.ShouldBe(product.Name);
+            expectedProduct.Price.ShouldBe(product.Price);
         }
 
         [Test]
         public void ShouldGetProducts()
         {
+            //Arrange
+            const int numberOfProduct = 3;
+
+            //Act
             var products = Service.GetProducts();
-            Assert.IsNotEmpty(products);
+
+            //Assert
+            products.Count().ShouldBe(numberOfProduct);
         }
     }
 }

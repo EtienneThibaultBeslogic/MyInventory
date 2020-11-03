@@ -15,10 +15,5 @@
                 Price = product.Price,
             };
         }
-
-        public Product FromDto()
-        {
-            return new Product { Id = Id, Name = Name, Price = Price };
-        }
     }
 }

@@ -1,16 +1,12 @@
 ﻿using MyInventory.API.Services;
 using MyInventory.API.Services.Settings;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyInventory.API.Test.Service
 {
     [TestFixture]
     class OrderServiceTest : BaseServiceTest<OrderService>
     {
-
         private IInsertDummyService _insertDummyService;
 
         protected override void RegisterServices()
@@ -24,7 +20,5 @@ namespace MyInventory.API.Test.Service
             _insertDummyService.Init();
             base.OnInit();
         }
-
-
     }
 }

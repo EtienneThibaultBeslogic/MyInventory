@@ -4,6 +4,5 @@ namespace MyInventory.API.Models
     {
         public string Name { get; set; }
         public string Price { get; set; }
-        public virtual ShoppingCart ShoppingCart { get; set; }
     }
 }
