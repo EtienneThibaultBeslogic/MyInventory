@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using MyInventory.API.Models.Dtos;
 using MyInventory.API.Services;
-using MyInventory.API.Services.Settings;
 
 namespace MyInventory.API.Controllers
 {
-    public class ClientController : ApiControllerBase
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ClientController : ControllerBase
     {
         private readonly IClientService _clientService;
         public ClientController(IClientService clientService)
@@ -14,27 +16,27 @@ namespace MyInventory.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetClient(int id)
+        public ClientDto GetClient(int id)
         {
-            return Json(_clientService.GetClient(id));
+            return _clientService.GetClient(id);
         }
 
         [HttpGet]
-        public IActionResult GetClients()
+        public IEnumerable<ClientDto> GetClients()
         {
-            return Json(_clientService.GetClients());
+            return _clientService.GetClients();
         }
 
         [HttpPut]
-        public IActionResult CreateClient(ClientDto clientDto)
+        public ClientDto CreateClient(ClientDto clientDto)
         {
-            return Json(_clientService.CreateClient(clientDto));
+            return _clientService.CreateClient(clientDto);
         }
 
         [HttpPost]
-        public IActionResult GetClient(ClientDto clientDto)
+        public ClientDto GetClient(ClientDto clientDto)
         {
-            return Json(_clientService.UpdateClient(clientDto));
+            return _clientService.UpdateClient(clientDto);
         }
 
         [HttpDelete]
