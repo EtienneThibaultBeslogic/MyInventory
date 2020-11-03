@@ -1,11 +1,10 @@
 ﻿using MyInventory.API.Enum;
-using MyInventory.API.Models.Dtos;
 
 namespace MyInventory.API.Services
 {
     public interface IOrderService
     {
-        public OrderDto CreateOrder(int shoppingCartId);
+        public OrderDto CreateOrder(int shoppingCartId, double discount = 0);
         public OrderDto ChangeOrderStatus(int shoppingCartId, OrderStatus status);
     }
 
