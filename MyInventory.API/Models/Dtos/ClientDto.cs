@@ -14,7 +14,7 @@ namespace MyInventory.API.Models.Dtos
             return new ClientDto
             {
                 Id = client.Id,
-                Firstname = client.Lastname,
+                Firstname = client.Firstname,
                 Lastname = client.Lastname,
                 DateOfBirth = client.DateOfBirth,
             };
