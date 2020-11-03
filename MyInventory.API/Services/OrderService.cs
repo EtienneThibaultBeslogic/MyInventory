@@ -1,4 +1,5 @@
 ﻿using MyInventory.API.Enum;
+using MyInventory.API.Models.Dtos;
 
 namespace MyInventory.API.Services
 {
@@ -15,7 +16,7 @@ namespace MyInventory.API.Services
             throw new System.NotImplementedException();
         }
 
-        public OrderDto CreateOrder(int shoppingCartId)
+        public OrderDto CreateOrder(int shoppingCartId, double discount = 0)
         {
             throw new System.NotImplementedException();
         }
